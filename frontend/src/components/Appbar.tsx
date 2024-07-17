@@ -57,6 +57,7 @@ export const Appbar = ({ currentPath, userInfo }: AppbarProps) => {
                 </div>
                 <div className='flex items-center justify-between space-x-8 mr-5'>
                     {currentPath !== "/publish" ? 
+                        <div className='hidden sm:flex'>
                         <a href="/publish" className="px-5 py-2.5 relative rounded group font-medium text-white font-medium inline-block">
                             <span className="absolute top-0 left-0 w-full h-full rounded opacity-50 filter blur-sm bg-gradient-to-br from-purple-600 to-blue-500"></span>
                             <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded opacity-50 from-purple-600 to-blue-500"></span>
@@ -64,6 +65,7 @@ export const Appbar = ({ currentPath, userInfo }: AppbarProps) => {
                             <span className="absolute inset-0 w-full h-full transition duration-200 ease-out rounded bg-gradient-to-br to-purple-600 from-blue-500"></span>
                             <span className="relative">Publish</span>
                         </a>
+                        </div>
                     : null}
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" aria-label="Notifications" className="opacity-75">
@@ -79,6 +81,11 @@ export const Appbar = ({ currentPath, userInfo }: AppbarProps) => {
                             <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-50">
                                 <div className="py-2 px-4">
                                     {userInfo?.email}
+                                </div>
+                                <div className="sm:hidden py-2 px-4 border-t border-gray-200 cursor-pointer hover:bg-gray-100" onClick={() => {
+                                    navigate('/publish')
+                                }}>
+                                    Publish
                                 </div>
                                 <div className="py-2 px-4 border-t border-gray-200 cursor-pointer hover:bg-gray-100" onClick={() => {
                                     navigate('/user/blogs')

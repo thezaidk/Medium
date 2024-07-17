@@ -6,7 +6,7 @@ export const Article= ({ blog } : { blog : Blog}) => {
 
     return ( 
     <div className="flex justify-center">
-        <div className="grid grid-cols-12 mx- my-16 h-screen">
+        <div className="grid grid-cols-12 mx-5 sm:mx-0 sm:my-10 h-screen">
             <div className="col-span-12 lg:col-span-8 pr-5 h-full overflow-y-auto">
                 <div className="text-4xl font-bold">
                     { blog.title}

@@ -35,7 +35,7 @@ export const Blog= () => {
     return (
         <div>
             <Appbar currentPath={location.pathname} userInfo={user}/>
-            <div className='flex justify-center mt-10'>
+            <div className='flex justify-center mt-5 '>
                 <div className='max-w-sm sm:max-w-md md:max-w-xl lg:max-w-4xl'>
                     <Article blog={blog} />
                 </div>

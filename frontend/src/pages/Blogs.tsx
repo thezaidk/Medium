@@ -59,7 +59,7 @@ export const Blogs = () => {
     return (
         <div>
             <Appbar currentPath={location.pathname} userInfo={user} />
-            <div className='flex justify-center mt-10'>
+            <div className='flex justify-center mt-7 sm:mt-10 mx-5 sm:mx-0'>
                 <div className='max-w-sm sm:max-w-md md:max-w-lg lg:max-w-3xl'>
                     {blogs.map(blog => (
                         <BlogCard 
