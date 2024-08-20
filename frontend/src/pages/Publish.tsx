@@ -48,7 +48,7 @@ export const Publish = () => {
                         onChange={(e) => setTitle(e.target.value)}
                         type="text"
                         value={title}
-                        className="w-full text-gray-900 text-5xl font-semibold rounded-lg focus:outline-none block w-full p-2.5"
+                        className="w-full text-gray-900 dark:text-gray-200 dark:bg-inherit text-5xl font-semibold rounded-lg focus:outline-none block w-full p-2.5"
                         placeholder="Title"
                         required
                     />
@@ -120,7 +120,7 @@ function TextEditor({ onChange, value }: { onChange: (e: ChangeEvent<HTMLTextAre
                         value={value}
                         id="editor"
                         rows={12}
-                        className="focus:outline-none block w-full text-xl text-gray-800 bg-white pl-2"
+                        className="focus:outline-none block w-full text-xl text-gray-800 dark:text-gray-200 bg-white dark:bg-inherit pl-2"
                         placeholder="Tell your story..."
                         required
                     />

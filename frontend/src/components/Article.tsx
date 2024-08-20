@@ -11,14 +11,14 @@ export const Article= ({ blog } : { blog : Blog}) => {
                 <div className="text-4xl font-bold">
                     { blog.title}
                 </div>
-                <div className="text-gray-500 pt-3">
+                <div className="text-gray-500 dark:text-gray-300 pt-3">
                     Posted on { formatDate(blog.publishedDate) }
                 </div>
                 <div className="text-lg pt-8">
                     { blog.content}
                 </div>
             </div>
-            <div className="hidden lg:block col-span-4 pl-3 sticky top-0 self-start">
+            <div className="hidden lg:block col-span-4 pl-5 sticky top-0 self-start">
                 <div className="font-semibold">Author</div> 
                 <div className="flex mt-5">
                     <div>
@@ -26,7 +26,7 @@ export const Article= ({ blog } : { blog : Blog}) => {
                     </div>
                     <div className="lg:pl-5">
                         <div className="pb-1 text-xl font-bold">{ blog.author.name || "Anonymous"}</div>
-                        <div className="text-gray-600">
+                        <div className="text-gray-600 dark:text-gray-300">
                             { blog.author.bio }
                         </div>
                     </div>

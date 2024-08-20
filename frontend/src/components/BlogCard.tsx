@@ -27,7 +27,7 @@ export const BlogCard= ({
                 <div className="flex justify-start items-center">
                     <div className="bg-gray-200 text-gray-800 flex items-center justify-center rounded-full h-8 w-8 mr-2">{authorName[0].toUpperCase()}</div>
                     <div className="pr-2">{authorName} •</div>
-                    <div className="text-gray-500">{publishedDate}</div>
+                    <div className="text-gray-500 dark:text-gray-300">{publishedDate}</div>
                 </div>
                 <Link to={`/blog/${id}`}>
                 <div>
@@ -37,7 +37,7 @@ export const BlogCard= ({
                 </Link>
                 <div className="flex justify-between pt-5">
                     <div>
-                        <div className="text-gray-600">{Math.ceil(content.length / 100)} min read</div>
+                        <div className="text-gray-600 dark:text-gray-300">{Math.ceil(content.length / 100)} min read</div>
                     </div>
                     {currentPath === "/blogs" ?
                     <div className="flex space-x-4">

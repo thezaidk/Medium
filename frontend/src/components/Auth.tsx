@@ -30,15 +30,15 @@ export const Auth= ({type}: {type: "signup" | "signin"}) => {
     }
 
     return (
-        <div className="h-screen flex justify-center flex-col">
+        <div className="h-screen flex justify-center  flex-col">
         <div className="flex justify-center">
             <div>
                 <div className="px-10">
                     <div className="text-4xl font-bold">
                         Create an account
                     </div>
-                    <div className="text-slate-500 mt-2">
-                        {type === "signin" ? "Don't have an account?" : "Already have an account?" }
+                    <div className="flex text-slate-500 mt-2">
+                        <div className="dark:text-gray-400">{type === "signin" ? "Don't have an account?" : "Already have an account?" }</div>
                         <Link className="pl-2 text-blue-600" to={type === "signin" ? "/signup" : "/signin"}>
                             {type === "signin" ? "Sign up" : "Sign in"}
                         </Link>
@@ -74,8 +74,8 @@ export const Auth= ({type}: {type: "signup" | "signin"}) => {
                     <button 
                         onClick={sendRequest} 
                         type="button" 
-                        className="relative inline-flex items-center justify-center p-4 px-6 py-3 mt-2 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-gray-900 rounded-full shadow-md group">
-                            <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-gray-900 group-hover:translate-x-0 ease">
+                        className="relative inline-flex items-center justify-center p-4 px-6 py-3 mt-2 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-gray-900 dark:border-white dark:bg-white rounded-full shadow-md group">
+                            <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-gray-900 dark:bg-secondary group-hover:translate-x-0 ease">
                                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                             </span>
                             <span className="absolute flex items-center justify-center w-full h-full text-gray-900 transition-all duration-300 transform group-hover:translate-x-full ease">{type === "signup" ? "Sign up" : "Sign in"}</span>
