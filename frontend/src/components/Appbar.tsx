@@ -1,5 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import mediumLogo from '../assets/medium-logo.png';
 import mediumLogoDark from '../assets/medium-logo-dark.png'
 import { userInfoPros } from '../pages/Blogs';
@@ -13,40 +12,8 @@ interface AppbarProps {
 }
 
 export const Appbar = ({ currentPath, userInfo }: AppbarProps) => {
-    const [dropdownOpen, setDropdownOpen] = useState(false);
-    const navigate = useNavigate();
-    const appbarRef = useRef<HTMLDivElement>(null);
-    
-    const toggleDropdown = () => {
-        setDropdownOpen(!dropdownOpen);
-    };
-
-    const handleLogout = () => {
-        localStorage.removeItem("token");
-        navigate("/signin");
-    };
-
-    useEffect(() => {
-        const handleMouseLeave = (event: MouseEvent) => {
-            if (appbarRef.current && !appbarRef.current.contains(event.relatedTarget as Node)) {
-                setDropdownOpen(false);
-            }
-        };
-        
-        const appbarElement = appbarRef.current;
-        if (appbarElement) {
-            appbarElement.addEventListener('mouseleave', handleMouseLeave);
-        }
-
-        return () => {
-            if (appbarElement) {
-                appbarElement.removeEventListener('mouseleave', handleMouseLeave);
-            }
-        };
-    }, []);
-
     return (
-        <div ref={appbarRef} className='items-center'>
+        <div className='items-center'>
             <div className='flex justify-between items-center pt-3'>
                 <div className='flex justify-between items-center space-x-5 pl-5'>
                     <Link to={"/blogs"}>

@@ -1,6 +1,3 @@
-import { Moon, Sun } from "lucide-react";
-
-import { Button } from "./ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,8 +16,7 @@ export const AppbarOptions = ({ userInfo }: any) => {
 
     if(userInfo === undefined) {
         return (
-            <div className="bg-gray-200 text-gray-800 flex items-center justify-center rounded-full h-8 w-8 mr-2 cursor-pointer">
-            </div>
+            <div className="bg-gray-200 text-gray-800 flex items-center justify-center rounded-full h-8 w-8 mr-2 cursor-pointer" />
         )
     }
 

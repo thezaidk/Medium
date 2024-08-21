@@ -3,7 +3,6 @@ import { formatDate } from "../pages/Blogs";
 
 
 export const Article= ({ blog } : { blog : Blog}) => {
-
     return ( 
     <div className="flex justify-center">
         <div className="grid grid-cols-12 mx-5 sm:mx-0 sm:my-10 h-screen">
