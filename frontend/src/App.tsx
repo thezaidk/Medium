@@ -3,8 +3,9 @@ import { Signup } from './pages/Signup'
 import { Signin } from './pages/Signin'
 import { Blog } from './pages/Blog'
 import { Blogs } from './pages/Blogs'
-import { Publish } from './pages/Publish'
 import { ThemeProvider } from './components/theme-provider'
+import { Publish } from './pages/Publish'
+import { Update } from './pages/Update'
 
 function App() {
 
@@ -19,7 +20,7 @@ function App() {
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/user/blogs" element={<Blogs />} />
             <Route path="/publish" element={<Publish />} />
-            <Route path="/update/:id" element={<Publish />} />
+            <Route path="/update/:id" element={<Update />} />
             <Route path="*" element={<Signin />} />
           </Routes>
         </BrowserRouter>

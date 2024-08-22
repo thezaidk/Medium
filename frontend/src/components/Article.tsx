@@ -1,23 +1,26 @@
 import { Blog } from "../hooks"
 import { formatDate } from "../pages/Blogs";
-
+import { Editor } from "./Editor";
 
 export const Article= ({ blog } : { blog : Blog}) => {
-    return ( 
-    <div className="flex justify-center">
-        <div className="grid grid-cols-12 mx-5 sm:mx-0 sm:my-10 h-screen">
-            <div className="col-span-12 lg:col-span-8 pr-5 h-full overflow-y-auto">
+    return (
+        <div className="flex justify-center gap-x-10 px-8">
+            <div className="h-full w-[75vh] overflow-y-auto">
                 <div className="text-4xl font-bold">
-                    { blog.title}
+                   { blog.title}
                 </div>
                 <div className="text-gray-500 dark:text-gray-300 pt-3">
                     Posted on { formatDate(blog.publishedDate) }
                 </div>
                 <div className="text-lg pt-8">
-                    { blog.content}
+                <Editor 
+                    onChange={() => {}}
+                    initialContent={blog.content}
+                    editable={false}
+                />
                 </div>
             </div>
-            <div className="hidden lg:block col-span-4 pl-5 sticky top-0 self-start">
+            <div className="hidden lg:block w-96">
                 <div className="font-semibold">Author</div> 
                 <div className="flex mt-5">
                     <div>
@@ -32,6 +35,5 @@ export const Article= ({ blog } : { blog : Blog}) => {
                 </div>
             </div>
         </div>
-    </div>
     )
 }

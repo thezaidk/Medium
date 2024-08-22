@@ -1,28 +1,66 @@
-import { Link, useLocation, useNavigate } from "react-router-dom"
+import { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 interface BlogCardPros {
-    id: string,
-    authorName: string,
-    title: string,
-    content: string,
-    publishedDate: string
+    id: string;
+    authorName: string;
+    title: string;
+    content: string;
+    publishedDate: string;
 }
 
-export const BlogCard= ({
+async function processContent(content: any) {
+    let finalData;
+
+    try {
+        // Try parsing the content as JSON
+        const parsedContent = await JSON.parse(content);
+
+        // If parsedContent is an array, process it accordingly
+        if (Array.isArray(parsedContent)) {
+            finalData = parsedContent.map(item => {
+                // Extract the text from each object in the array, if applicable
+                if (item.content && Array.isArray(item.content)) {
+                    return item.content.map((contentItem: any) => contentItem.text || '').join(' ');
+                }
+                return '';
+            }).join(' ');
+        } else {
+            finalData = ''; // Or some other default/fallback behavior
+        }
+    } catch (e) {
+        // If content is not JSON, treat it as a direct string
+        finalData = content;
+    }
+
+    return finalData;
+}
+
+export const BlogCard = ({
     id,
     authorName,
     title,
     content,
     publishedDate
-} : BlogCardPros) => {
+}: BlogCardPros) => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const currentPath = location.pathname;
 
-    const navigate= useNavigate();
-    const location= useLocation();
-    const currentPath= location.pathname;
+    // State to hold the final processed content
+    const [finalData, setFinalData] = useState<string>("");
 
+    useEffect(() => {
+        // Process content asynchronously and set the final data
+        const fetchContent = async () => {
+            const data = await processContent(content);
+            setFinalData(data);
+        };
+
+        fetchContent();
+    }, [content]);
     return (
         <div>
-            
             <div>
                 <div className="flex justify-start items-center">
                     <div className="bg-gray-200 text-gray-800 flex items-center justify-center rounded-full h-8 w-8 mr-2">{authorName[0].toUpperCase()}</div>
@@ -32,12 +70,12 @@ export const BlogCard= ({
                 <Link to={`/blog/${id}`}>
                 <div>
                     <div className="text-xl font-bold mt-3">{title}</div>
-                    <div className="mt-1">{content.length > 150 ?content.slice(0, 150)+"..." : content}</div>
+                    <div className="mt-1">{finalData.length > 150 ?finalData.slice(0, 150)+"..." : finalData}</div>
                 </div>
                 </Link>
                 <div className="flex justify-between pt-5">
                     <div>
-                        <div className="text-gray-600 dark:text-gray-300">{Math.ceil(content.length / 100)} min read</div>
+                        <div className="text-gray-600 dark:text-gray-300">{Math.ceil(content.length / 500)} min read</div>
                     </div>
                     {currentPath === "/blogs" ?
                     <div className="flex space-x-4">
